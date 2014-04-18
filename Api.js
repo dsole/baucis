@@ -179,7 +179,7 @@ var Api = module.exports = deco(function (options) {
 
   api.parser = function (mime) {
     mime = mime || 'application/json';
-    var handler = parsers[mime];
+    var handler = parsers[mime] || parsers[mime.split(/;/)[0]];
     return handler ? handler() : false;
   };
 
